@@ -1,0 +1,13 @@
+rootProject.name = 'bomTest'
+
+include 'service'
+include 'bom'
+
+
+gradle.allprojects{
+    ext{
+        apiVersion = '0.0.1'
+    }
+}
+
+

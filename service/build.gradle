@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+
+repositories {
+    mavenCentral()
+    mavenLocal({
+        name = "MyRepo"
+        url = "file:I:\\development\\dependense\\maven\\data"
+    })
+}
+
+dependencies {
+    implementation (platform ("qwe.qwe:qwe-bom:1"))
+
+    implementation 'com.google.guava:guava'
+    implementation group: 'org.jeasy', name: 'easy-random-core'
+
+}

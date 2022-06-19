@@ -1,0 +1,39 @@
+apply plugin: 'java-platform'
+apply plugin: 'maven-publish'
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+}
+
+publishing {
+    publications  {
+        maven(MavenPublication) {
+            groupId "qwe.qwe"
+            artifactId "qwe-bom"
+            version "1"
+            from components.javaPlatform
+
+            artifact sourceJar {
+                classifier "sources"
+            }
+        }
+    }
+
+    repositories {
+        mavenCentral()
+        mavenLocal({
+            name = "MyRepo"
+            url = "file:I:\\development\\dependense\\maven\\data"
+        })
+    }
+
+}
+
+dependencies {
+    constraints {
+        api group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.7.0'
+        api 'com.google.guava:guava:19.0'
+        api group: 'org.jeasy', name: 'easy-random-core', version: '5.0.0'
+
+    }
+}
